@@ -1,279 +1,154 @@
-# NGÀY 2 – CÔNG THỨC NÂNG CAO & NHẬN DẠNG DẠNG TOÁN
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ngày 2 - Công thức nâng cao</title>
 
-## 🎯 Mục tiêu
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-Sau ngày 2, bạn phải:
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    .box {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
 
-* Nhìn đề → nhận ra **có công thức hay không**
-* Thuộc các công thức quan trọng
-* Biết **biến đổi biểu thức → code nhanh O(1)**
-* Tránh dùng loop khi không cần
+<body>
 
----
+<h1>NGÀY 2 – CÔNG THỨC NÂNG CAO</h1>
 
-# 🧠 1. TƯ DUY QUAN TRỌNG NHẤT
+<div class="box">
+<h2>🎯 Mục tiêu</h2>
+<ul>
+  <li>Nhận ra bài có công thức</li>
+  <li>Code O(1)</li>
+  <li>Không dùng loop sai chỗ</li>
+</ul>
+</div>
 
-👉 Mọi bài hôm nay đều có đặc điểm:
+<div class="box">
+<h2>🧠 Tư duy</h2>
+<p><b>Nếu bạn dùng for → bạn đang sai hướng</b></p>
+<ul>
+  <li>Thấy tổng → nghĩ công thức</li>
+  <li>Thấy phân số → rút gọn</li>
+</ul>
+</div>
 
-> ❗ Nếu bạn dùng `for` → bạn đang làm sai hướng
+<div class="box">
+<h2>📐 Tổng lập phương</h2>
 
----
-
-## 🔥 Quy tắc:
-
-* Thấy tổng → nghĩ công thức
-* Thấy tích → nghĩ biến đổi
-* Thấy phân số → nghĩ rút gọn
-
----
-
-# 📐 2. DẠNG 1 – TỔNG LUỸ THỪA
-
-## 🟢 Tổng lập phương:
-
+$$
 1^3 + 2^3 + \cdots + n^3 = \left(\frac{n(n+1)}{2}\right)^2
+$$
 
-👉 Ý nghĩa:
-
-* Tổng lập phương = bình phương tổng
-
----
-
-## Code:
-
-```python
+<pre><code>
 n = int(input())
 s = n * (n + 1) // 2
 print(s * s)
-```
+</code></pre>
 
----
+</div>
 
-## 🟡 Tổng luỹ thừa 5:
+<div class="box">
+<h2>📐 Tổng lũy thừa 5</h2>
 
-1^5 + 2^5 + \cdots + n^5 = \frac{n^2 (n+1)^2 (2n^2 + 2n -1)}{12}
+$$
+1^5 + 2^5 + \cdots + n^5 =
+\frac{n^2 (n+1)^2 (2n^2 + 2n -1)}{12}
+$$
 
----
+</div>
 
-## Code:
+<div class="box">
+<h2>🔢 Tổng nhân liên tiếp</h2>
 
-```python
-n = int(input())
-s = n*n*(n+1)*(n+1)*(2*n*n+2*n-1)//12
-print(s)
-```
+$$
+1\cdot2 + 2\cdot3 + \cdots + n(n+1) =
+\frac{n(n+1)(n+2)}{3}
+$$
 
----
+</div>
 
-# 🔢 3. DẠNG 2 – TỔNG NHÂN LIÊN TIẾP
+<div class="box">
+<h2>🔍 Tổng phân số</h2>
 
-## 🟢 Dạng:
+$$
+\frac{1}{1\cdot2} + \frac{1}{2\cdot3} + \cdots + \frac{1}{n(n+1)}
+= \frac{n}{n+1}
+$$
 
-1\cdot2 + 2\cdot3 + \cdots + n(n+1) = \frac{n(n+1)(n+2)}{3}
+</div>
 
----
+<div class="box">
+<h2>📊 Cấp số nhân</h2>
 
-## Code:
+$$
+1 + p + p^2 + \cdots + p^n =
+\frac{p^{n+1}-1}{p-1}
+$$
 
-```python
-n = int(input())
-print(n*(n+1)*(n+2)//3)
-```
+</div>
 
----
+<div class="box">
+<h2>⚠️ Lỗi hay gặp</h2>
 
-# 🔍 4. DẠNG 3 – TỔNG PHÂN SỐ (RẤT QUAN TRỌNG)
+<ul>
+  <li>Dùng loop thay vì công thức</li>
+  <li>Sai chia nguyên // và chia thực /</li>
+  <li>Sai thứ tự input</li>
+</ul>
 
-## 🟢 Dạng 1:
+</div>
 
-\frac{1}{1\cdot2} + \frac{1}{2\cdot3} + \cdots + \frac{1}{n(n+1)} = \frac{n}{n+1}
+<div class="box">
+<h2>🧪 Bài tập</h2>
 
-👉 Đây là dạng **rút gọn telescoping**
+<ul>
+  <li>1. Tính $1^3 + 2^3 + ... + N^3$</li>
+  <li>2. Tính $1×2 + 2×3 + ... + N(N+1)$</li>
+  <li>3. Tính $\frac{1}{1×2} + ... + \frac{1}{N(N+1)}$</li>
+  <li>4. Tính $\frac{1}{1×2×3} + ...$</li>
+  <li>5. Tính $1 + p + p^2 + ... + p^N$</li>
+</ul>
 
----
+</div>
 
-## Code:
-
-```python
-n = int(input())
-print(n / (n + 1))
-```
-
----
-
-## 🟡 Dạng 2:
-
-\frac{1}{1\cdot2\cdot3} + \frac{1}{2\cdot3\cdot4} + \cdots = \frac{n(n+3)}{4(n+1)(n+2)}
-
----
-
-## Code:
-
-```python
-n = int(input())
-s = n*(n+3)/(4*(n+1)*(n+2))
-print(s)
-```
-
----
-
-# 📊 5. DẠNG 4 – DÃY CÓ THAM SỐ p
-
-## 🟢 Tổng cấp số nhân:
-
-1 + p + p^2 + \cdots + p^n = \frac{p^{n+1}-1}{p-1}
-
----
-
-## Code:
-
-```python
-n = int(input())
-p = int(input())
-s = (p**(n+1) - 1) // (p - 1)
-print(s)
-```
-
----
-
-## 🔴 Dạng nâng cao:
-
-1 + 2p + 3p^2 + \cdots + (n+1)p^n = \frac{(n+1)p^{n+1}}{p-1} - \frac{p^{n+1}-1}{(p-1)^2}
-
----
-
-# ⚠️ 6. LỖI CHẾT NGƯỜI
-
-## ❌ 1. Dùng loop thay vì công thức
-
-```python
-# Sai
-s = 0
-for i in range(1, n+1):
-    s += i*i*i
-```
-
-👉 Với n = 10^6 → TLE
-
----
-
-## ❌ 2. Tràn số (Python ít bị nhưng vẫn cần chú ý)
-
-→ Dùng `//` thay vì `/` khi cần số nguyên
-
----
-
-## ❌ 3. Sai thứ tự input
-
-```python
-# Sai (dễ gặp)
-p = int(input())
-n = int(input())
-```
-
----
-
-## ❌ 4. Sai kiểu float
-
-```python
-print(n/(n+1))  # có thể cần format
-```
-
----
-
-# 🧪 7. BÀI TẬP TỰ LUYỆN
-
-## 🟢 Mức cơ bản
-
-### Bài 1
-
-Tính:
-
-```math
-S = 1^3 + 2^3 + ... + N^3
-```
-
----
-
-### Bài 2
-
-Tính:
-
-```math
-S = 1×2 + 2×3 + ... + N(N+1)
-```
-
----
-
-## 🟡 Mức trung bình
-
-### Bài 3
-
-Tính:
-
-```math
-S = 1/(1×2) + 1/(2×3) + ... + 1/(N(N+1))
-```
-
----
-
-### Bài 4
-
-Tính:
-
-```math
-S = 1/(1×2×3) + ... + 1/(N(N+1)(N+2))
-```
-
----
-
-### Bài 5
-
-Tính:
-
-```math
-S = 1 + p + p^2 + ... + p^N
-```
-
----
-
-## 🔴 Mức nâng cao
-
-### Bài 6
-
-Tính:
-
-```math
-S = 1 + 2p + 3p^2 + ... + (N+1)p^N
-```
-
----
-
-### Bài 7
-
-Tính:
-
-```math
-S = 3/(1×2)^2 + 5/(2×3)^2 + ... + (2N+1)/(N(N+1))^2
-```
-
----
-
-# 🎯 CHECKLIST NGÀY 2
-
-Bạn đạt nếu:
-
-* ✔ Nhìn đề → biết có công thức hay không
-* ✔ Không dùng loop sai chỗ
-* ✔ Thuộc ít nhất 5 công thức
-* ✔ Code < 5 phút / bài
-
----
-
-# 🚀 Gợi ý ngày 3
-
-* Dãy đặc biệt nâng cao
-* Nhận dạng biến đổi (level khó hơn)
-
-Nếu muốn:
-👉 Tôi có thể cho bạn **10 bài test ẩn cực khó** để check level thật
+</body>
+</html>
