@@ -1,4 +1,4 @@
-# 📘 NGÀY 2 – CÔNG THỨC NÂNG CAO & NHẬN DẠNG DẠNG TOÁN
+# NGÀY 2 – CÔNG THỨC NÂNG CAO & NHẬN DẠNG DẠNG TOÁN
 
 ## 🎯 Mục tiêu
 
