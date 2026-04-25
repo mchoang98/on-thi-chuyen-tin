@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giáo án ôn luyện ELP 3 tuần</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --border: #e5e7eb;
+      --good: #16a34a;
+      --warn: #f59e0b;
+      --bad: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 36px 24px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 10px; font-size: 32px; }
+    header p { margin: 0; font-size: 16px; opacity: 0.95; }
+    main { max-width: 1100px; margin: 24px auto; padding: 0 18px 48px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .box, .day {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    .box h2, .box h3 { margin-top: 0; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    h2.week-title {
+      margin-top: 34px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--primary);
+      color: #111827;
+    }
+    .day { margin: 16px 0; }
+    .day h3 { margin: 0 0 8px; color: var(--primary); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    ul { margin: 8px 0 0 20px; padding: 0; }
+    li { margin: 4px 0; }
+    .criteria {
+      border-left: 4px solid var(--good);
+      padding-left: 12px;
+      margin-top: 10px;
+      color: #064e3b;
+      background: #ecfdf5;
+      border-radius: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    .warning {
+      border-left: 4px solid var(--warn);
+      padding: 10px 12px;
+      background: #fffbeb;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+    }
+    th { background: #eef2ff; text-align: left; }
+    code {
+      background: #f3f4f6;
+      padding: 2px 5px;
+      border-radius: 6px;
+    }
+    .print-note { color: var(--muted); font-size: 14px; }
+    .checklist li { list-style: none; margin-left: -20px; }
+    .checklist li::before { content: "☐ "; color: var(--primary); font-weight: bold; }
+    @media print {
+      header { background: white; color: black; border-bottom: 2px solid #000; }
+      body { background: white; }
+      .box, .day { box-shadow: none; break-inside: avoid; }
+      main { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Giáo án ôn luyện ELP trong 3 tuần</h1>
+    <p>Dành cho người đã biết Python cơ bản nhưng chưa từng đi thi lập trình</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <div class="box">
+        <span class="tag">Mục tiêu</span>
+        <h2>Sau 21 ngày</h2>
+        <ul>
+          <li>Đọc đề nhanh, xác định đúng dạng bài.</li>
+          <li>Code Python ổn định, ít lỗi cú pháp.</li>
+          <li>Làm được bài công thức, rẽ nhánh, vòng lặp, mảng, xâu.</li>
+          <li>Biết tự test và debug trước khi nộp.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <span class="tag">Tài liệu ELP</span>
+        <h2>5 chuyên đề chính</h2>
+        <ul>
+          <li>Phần 1: Cấu trúc tuần tự</li>
+          <li>Phần 2: Cấu trúc rẽ nhánh</li>
+          <li>Phần 3: Cấu trúc lặp</li>
+          <li>Phần 4: Kiểu mảng</li>
+          <li>Phần 5: Kiểu xâu</li>
+        </ul>
+      </div>
+      <div class="box">
+        <span class="tag">Thời lượng</span>
+        <h2>Mỗi ngày 2.5–3 giờ</h2>
+        <ul>
+          <li>30 phút: ôn lý thuyết</li>
+          <li>90 phút: làm bài</li>
+          <li>30–45 phút: sửa lỗi, ghi chú pattern</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="box">
+      <h2>Quy tắc học mỗi ngày</h2>
+      <ul>
+        <li>Không xem code mẫu trước khi tự làm ít nhất 20 phút.</li>
+        <li>Mỗi bài phải có ít nhất 3 test tự tạo: test nhỏ, test biên, test bình thường.</li>
+        <li>Ghi lại lỗi vào “sổ lỗi”: sai input, sai công thức, sai vòng lặp, sai định dạng output.</li>
+        <li>Ưu tiên hiểu thuật toán hơn là học thuộc code.</li>
+      </ul>
+      <div class="warning"><strong>Lưu ý:</strong> Tài liệu có một số code mẫu bị lỗi đánh máy. Khi học, hãy bám vào đề bài, thuật toán và test mẫu; không copy nguyên code nếu chưa kiểm tra.</div>
+    </div>
+
+    <h2 class="week-title">Tuần 1 — Nền tảng thi lập trình: input/output, công thức, rẽ nhánh</h2>
+
+    <section class="day">
+      <h3>Ngày 1 — Làm quen format đề thi và nhập xuất Python</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Đọc đề: Input, Output, ví dụ mẫu.</li>
+            <li><code>int(input())</code>, <code>float(input())</code>, <code>print()</code>.</li>
+            <li>Định dạng số thực: <code>{:.2f}</code>, <code>{:.3f}</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 1: Độ dài đoạn thẳng 1</li>
+            <li>Bài 2: Chu vi và diện tích tam giác</li>
+            <li>Bài 3: Độ dài đoạn thẳng 2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: biết dùng <code>sqrt</code>, <code>pow</code>, viết hàm đơn giản, in đúng số chữ số thập phân.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 2 — Công thức tổng cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tổng 1 + 2 + ... + N.</li>
+            <li>Tổng bình phương.</li>
+            <li>Tổng số lẻ.</li>
+            <li>Phân biệt <code>/</code> và <code>//</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 5: Tổng các số tự nhiên liên tiếp</li>
+            <li>Bài 6: Tổng bình phương</li>
+            <li>Bài 7: Tổng các số lẻ</li>
+            <li>Bài 8: Tổng lập phương</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: nhìn đề tổng là biết dùng công thức O(1), không dùng vòng lặp khi không cần.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 3 — Công thức tổng nâng cao</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tổng lũy thừa.</li>
+            <li>Tổng nhân dồn.</li>
+            <li>Tổng nghịch đảo.</li>
+            <li>Cẩn thận số nguyên lớn.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 9: Tổng lũy thừa 5</li>
+            <li>Bài 10: Tổng cặp số tự nhiên nhân dồn</li>
+            <li>Bài 11: Tổng nghịch đảo cặp số</li>
+            <li>Bài 12: Tổng nghịch đảo cặp ba số</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: viết đúng công thức, tránh nhầm thứ tự phép toán.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 4 — Rẽ nhánh cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li><code>if / elif / else</code>.</li>
+            <li>Toán tử chia dư <code>%</code>.</li>
+            <li>Điều kiện ghép: <code>and</code>, <code>or</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 16: Chẵn lẻ</li>
+            <li>Bài 17: Chia hết cho 3 và không chia hết cho 5</li>
+            <li>Bài 18: Giá trị lớn nhất</li>
+            <li>Bài 19: Giá trị nhỏ nhất</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: viết điều kiện rõ ràng, không nhầm dấu <code>=</code> và <code>==</code>.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 5 — Rẽ nhánh với bài toán số học</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tìm max/min thủ công.</li>
+            <li>Tách chữ số bằng <code>//</code> và <code>%</code>.</li>
+            <li>Hoán đổi biến: <code>a, b = b, a</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 20: Cặp số có tổng lớn nhất</li>
+            <li>Bài 21: Ghép số</li>
+            <li>Bài 28: Chữ số lớn nhất</li>
+            <li>Bài 29: Hoán vị chữ số lớn nhất</li>
+            <li>Bài 30: Xóa số</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: xử lý được số 3 chữ số, không cần dùng chuỗi.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 6 — Phương trình và hình học</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Biện luận phương trình bậc nhất.</li>
+            <li>Biện luận phương trình bậc hai.</li>
+            <li>Điều kiện tam giác.</li>
+            <li>Công thức Heron.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 22: Phương trình bậc nhất</li>
+            <li>Bài 23: Phương trình bậc hai</li>
+            <li>Bài 24: Tam giác 1</li>
+            <li>Bài 25: Điểm và đường tròn</li>
+            <li>Bài 26: Tam giác 2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: biết chia trường hợp, không tính căn khi delta âm.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 7 — Kiểm tra tuần 1</h3>
+      <div class="grid">
+        <div>
+          <strong>Đề tự luyện 90 phút</strong>
+          <ul>
+            <li>1 bài công thức tổng.</li>
+            <li>1 bài rẽ nhánh chia hết.</li>
+            <li>1 bài tách chữ số.</li>
+            <li>1 bài hình học hoặc phương trình.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Việc cần làm sau đề</strong>
+          <ul>
+            <li>Chấm lại bằng test mẫu.</li>
+            <li>Tạo thêm test biên.</li>
+            <li>Viết lại bài sai mà không nhìn lời giải.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: hoàn thành tối thiểu 3/4 bài trong 90 phút.</div>
+    </section>
+
+    <h2 class="week-title">Tuần 2 — Vòng lặp, số học, mảng 1 chiều</h2>
+
+    <section class="day">
+      <h3>Ngày 8 — Vòng lặp for</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li><code>for i in range(...)</code>.</li>
+            <li>Cộng dồn, nhân dồn.</li>
+            <li>Đếm số lượng thỏa điều kiện.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 34: Tổng phân số liên tiếp</li>
+            <li>Bài 35: Tổng phân số lẻ</li>
+            <li>Bài 36: Giai thừa</li>
+            <li>Bài 37: Chia hết cho 2 và không chia hết cho 3</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: biết khi nào cần duyệt từ 1 đến N, khi nào cần đến N + 1.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 9 — Ước số, chính phương, nguyên tố</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Kiểm tra số chính phương.</li>
+            <li>Liệt kê ước.</li>
+            <li>Đếm ước, tổng ước.</li>
+            <li>Kiểm tra nguyên tố bằng duyệt đến căn bậc hai.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 38: Đếm số chính phương</li>
+            <li>Bài 39: Liệt kê ước</li>
+            <li>Bài 43: Đếm số lượng ước</li>
+            <li>Bài 45: Tổng ước</li>
+            <li>Bài 46: Số nguyên tố</li>
+            <li>Bài 47: Liệt kê số nguyên tố</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: tự viết được <code>is_prime(n)</code> và <code>is_square(n)</code>.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 10 — Vét cạn cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Duyệt mọi khả năng.</li>
+            <li>Vòng lặp lồng nhau.</li>
+            <li>Kỹ thuật cờ <code>found</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 40: Mua hàng</li>
+            <li>Bài 41: Đổi tiền 1</li>
+            <li>Bài 42: Đổi tiền 2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: biết tối ưu từ 3 vòng lặp xuống 2 vòng lặp khi tính được biến còn lại.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 11 — Vòng lặp while</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Vòng lặp chưa biết trước số lần.</li>
+            <li>Thuật toán Euclid tìm UCLN.</li>
+            <li>Cắt số bằng <code>n //= 10</code>.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 49: Ước chung lớn nhất</li>
+            <li>Bài 50: Thừa số nguyên tố</li>
+            <li>Bài 51: Số nguyên tố 2</li>
+            <li>Bài 52: Tổng chữ số</li>
+            <li>Bài 53: Cắt số</li>
+            <li>Bài 54: Ước nguyên tố lớn nhất</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: vòng lặp luôn có điều kiện dừng, không bị lặp vô hạn.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 12 — Mảng 1 chiều cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tạo list.</li>
+            <li>Nhập N phần tử.</li>
+            <li>Duyệt theo chỉ số và duyệt theo giá trị.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 55: Mảng một chiều</li>
+            <li>Bài 56: Liệt kê phần tử chẵn</li>
+            <li>Bài 57: Vị trí số chính phương</li>
+            <li>Bài 58: Đếm phần tử</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: không nhầm chỉ số 0-based của Python với vị trí 1-based của đề.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 13 — Mảng 1 chiều nâng cao</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tìm min/max.</li>
+            <li>Đếm số lượng max/min.</li>
+            <li>Tính tổng, trung bình.</li>
+            <li>Tìm vị trí đầu tiên.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 59: Tìm phần tử nhỏ nhất</li>
+            <li>Bài 60: Đếm số lượng phần tử lớn nhất</li>
+            <li>Bài 61: Tổng và trung bình cộng</li>
+            <li>Bài 62: Trung bình cộng 2</li>
+            <li>Bài 63: Vị trí K</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: viết đúng bài tìm kiếm có trường hợp không tìm thấy.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 14 — Kiểm tra tuần 2</h3>
+      <div class="grid">
+        <div>
+          <strong>Đề tự luyện 120 phút</strong>
+          <ul>
+            <li>1 bài nguyên tố hoặc chính phương.</li>
+            <li>1 bài vòng lặp while.</li>
+            <li>2 bài mảng 1 chiều.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Chuẩn đánh giá</strong>
+          <ul>
+            <li>Không dùng code mẫu.</li>
+            <li>Mỗi bài có ít nhất 3 test.</li>
+            <li>Ghi lại lỗi thường gặp.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: hoàn thành tối thiểu 3/4 bài trong 120 phút.</div>
+    </section>
+
+    <h2 class="week-title">Tuần 3 — Mảng 2 chiều, xâu, luyện đề</h2>
+
+    <section class="day">
+      <h3>Ngày 15 — Mảng 1 chiều dạng dãy</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Chênh lệch lớn nhất.</li>
+            <li>Tổng 3 phần tử liên tiếp.</li>
+            <li>Kiểm tra dãy không giảm.</li>
+            <li>Dãy Fibonacci.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 64: Chênh lệch lớn nhất</li>
+            <li>Bài 65: Tổng lớn nhất</li>
+            <li>Bài 66: Dãy không giảm</li>
+            <li>Bài 67: Dãy Fibonacci</li>
+            <li>Bài 69: Dãy đảo</li>
+            <li>Bài 70: Nhân đôi dãy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: không truy cập vượt chỉ số mảng.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 16 — Mảng hai chiều cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Nhập ma trận M x N.</li>
+            <li>Duyệt hàng, duyệt cột.</li>
+            <li>Tổng, đếm, tìm max/min trong ma trận.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 71: Mảng hai chiều</li>
+            <li>Bài 72: Tổng số chẵn</li>
+            <li>Bài 73: Đếm số lượng</li>
+            <li>Bài 75: Tìm giá trị lớn nhất</li>
+            <li>Bài 76: Đếm số lượng giá trị nhỏ nhất</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: viết được hai vòng lặp lồng nhau chuẩn.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 17 — Mảng hai chiều nâng cao</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Tìm max từng hàng.</li>
+            <li>Tìm min từng cột.</li>
+            <li>Tính tổng từng hàng, từng cột.</li>
+            <li>Tìm vị trí phần tử thỏa điều kiện.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 77: Giá trị lớn nhất mỗi hàng</li>
+            <li>Bài 78: Giá trị nhỏ nhất mỗi cột</li>
+            <li>Bài 79: Tổng từng hàng, từng cột</li>
+            <li>Bài 80: Vị trí số chính phương</li>
+            <li>Bài 81: Vị trí số nguyên tố</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: in đúng vị trí theo hàng/cột, dùng biến cờ khi không có kết quả.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 18 — Xâu cơ bản</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li><code>len()</code>, <code>find()</code>, <code>count()</code>.</li>
+            <li>Nối xâu.</li>
+            <li>Duyệt từng ký tự.</li>
+            <li>Đếm ký tự số.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 82: Xâu 1</li>
+            <li>Bài 83: Vị trí S1 trong S</li>
+            <li>Bài 84: Đếm xâu S1 trong S</li>
+            <li>Bài 85: Nối xâu</li>
+            <li>Bài 86: Đếm ký tự số</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: phân biệt vị trí Python 0-based và yêu cầu đề 1-based.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 19 — Xâu nâng cao</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Đảo xâu.</li>
+            <li>Palindrome.</li>
+            <li>Viết hoa, viết thường.</li>
+            <li>Chuẩn hóa khoảng trắng.</li>
+            <li>Đếm từ.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 87: Xâu đảo</li>
+            <li>Bài 88: Xâu đối xứng</li>
+            <li>Bài 89: Xâu chữ hoa</li>
+            <li>Bài 90: Xâu chữ thường</li>
+            <li>Bài 91: Chuẩn hóa xâu</li>
+            <li>Bài 92: Đếm số lượng từ</li>
+            <li>Bài 93: Ký tự đầu tiên các từ in hoa</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: xử lý được xâu có nhiều dấu cách ở đầu, giữa, cuối.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 20 — Xâu dạng tách, đếm, sắp xếp</h3>
+      <div class="grid">
+        <div>
+          <strong>Kiến thức</strong>
+          <ul>
+            <li>Đếm phân phối ký tự.</li>
+            <li>Tách số trong xâu.</li>
+            <li>Tìm số lớn nhất trong xâu.</li>
+            <li>Sắp xếp ký tự.</li>
+            <li>Nén và giải nén xâu ở mức cơ bản.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bài luyện</strong>
+          <ul>
+            <li>Bài 94: Đếm phân phối</li>
+            <li>Bài 95: Tách số trong xâu</li>
+            <li>Bài 96: Số lớn nhất trong xâu</li>
+            <li>Bài 97: Sắp xếp ký tự</li>
+            <li>Bài 99: Nén xâu</li>
+            <li>Bài 100: Giải nén xâu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: tách đúng số nhiều chữ số, không chỉ đếm từng chữ số riêng lẻ.</div>
+    </section>
+
+    <section class="day">
+      <h3>Ngày 21 — Thi thử tổng hợp</h3>
+      <div class="grid">
+        <div>
+          <strong>Đề thi thử 150 phút</strong>
+          <ul>
+            <li>Bài 1: Công thức hoặc rẽ nhánh.</li>
+            <li>Bài 2: Vòng lặp / số học.</li>
+            <li>Bài 3: Mảng 1 chiều.</li>
+            <li>Bài 4: Mảng 2 chiều.</li>
+            <li>Bài 5: Xâu.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Cách chấm</strong>
+          <ul>
+            <li>5 bài đúng hoàn toàn: sẵn sàng đi thi.</li>
+            <li>4 bài đúng: ổn, cần giảm lỗi nhỏ.</li>
+            <li>3 bài đúng: cần luyện thêm mảng/xâu.</li>
+            <li>Dưới 3 bài: quay lại tuần 2 và tuần 3.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria">Đạt yêu cầu: biết phân bổ thời gian, bỏ qua bài khó, ăn chắc bài dễ.</div>
+    </section>
+
+    <section class="box">
+      <h2>Checklist trước ngày thi</h2>
+      <ul class="checklist">
+        <li>Thuộc các công thức tổng cơ bản.</li>
+        <li>Viết được <code>is_prime()</code>, <code>is_square()</code>, <code>gcd()</code>.</li>
+        <li>Nhập được list 1 chiều và ma trận 2 chiều.</li>
+        <li>Xử lý được xâu: đảo, đếm, chuẩn hóa, tách số.</li>
+        <li>Biết dùng biến cờ <code>found</code> cho trường hợp không có kết quả.</li>
+        <li>Biết tạo test biên: N = 1, xâu rỗng/khoảng trắng, ma trận nhỏ 1x1.</li>
+        <li>Không in thừa chữ, thừa dấu cách nếu đề yêu cầu output chính xác.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>Bảng ôn nhanh theo dạng bài</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dạng bài</th>
+            <th>Kỹ năng cần có</th>
+            <th>Bài trong ELP nên luyện</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Công thức</td>
+            <td>Biến đổi toán, chia nguyên, số thực</td>
+            <td>Bài 5–15</td>
+          </tr>
+          <tr>
+            <td>Rẽ nhánh</td>
+            <td>Điều kiện, max/min, chia trường hợp</td>
+            <td>Bài 16–33</td>
+          </tr>
+          <tr>
+            <td>Vòng lặp</td>
+            <td>For, while, cộng dồn, vét cạn</td>
+            <td>Bài 34–54</td>
+          </tr>
+          <tr>
+            <td>Mảng 1 chiều</td>
+            <td>Duyệt list, tìm kiếm, min/max, tổng</td>
+            <td>Bài 55–70</td>
+          </tr>
+          <tr>
+            <td>Mảng 2 chiều</td>
+            <td>Duyệt hàng/cột, vị trí, điều kiện</td>
+            <td>Bài 71–81</td>
+          </tr>
+          <tr>
+            <td>Xâu</td>
+            <td>Chuỗi, ký tự, chuẩn hóa, tách số</td>
+            <td>Bài 82–110</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="print-note">Gợi ý: Có thể in file này ra giấy hoặc mở trên trình duyệt để tick checklist mỗi ngày.</p>
+    </section>
+  </main>
+</body>
+</html>
