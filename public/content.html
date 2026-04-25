@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giao trinh on tap ELP</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <button class="mobile-toggle" id="mobileToggle">Menu</button>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>Giao trinh on tap ELP</h1>
+        <p>Markdown docs viewer</p>
+      </div>
+
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Tim bai..." />
+      </div>
+
+      <nav id="navList"></nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div id="breadcrumb"></div>
+        <div class="toolbar">
+          <span id="statusText" class="status-text"></span>
+          <button id="editBtn">Sua</button>
+          <button id="saveBtn" class="hidden">Luu</button>
+          <button id="cancelBtn" class="hidden">Huy</button>
+          <button id="prevBtn">Truoc</button>
+          <button id="nextBtn">Sau</button>
+        </div>
+      </div>
+
+      <section id="editorPanel" class="editor-panel hidden">
+        <textarea id="editorInput" spellcheck="false"></textarea>
+      </section>
+
+      <article id="content">Loading...</article>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
