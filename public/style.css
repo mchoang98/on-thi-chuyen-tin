@@ -53,6 +53,13 @@ body {
   margin: 14px 0;
 }
 
+.sidebar-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
 .search input {
   width: 100%;
   padding: 10px;
@@ -73,7 +80,8 @@ body {
   gap: 6px;
 }
 
-#navList button {
+#navList button,
+.nav-folder-row {
   border: none;
   background: transparent;
   text-align: left;
@@ -82,7 +90,8 @@ body {
   cursor: pointer;
 }
 
-#navList button:hover {
+#navList button:hover,
+.nav-folder-row:hover {
   background: #f0f0ee;
 }
 
@@ -90,6 +99,88 @@ body {
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: bold;
+}
+
+.drop-hint {
+  border: 1px dashed #cbd5e1;
+  background: #f8fafc;
+  color: var(--muted);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  transition: 0.2s ease;
+}
+
+.drop-hint.drag-over,
+.nav-folder-row.drag-over {
+  border-color: var(--accent);
+  background: #dbeafe;
+  color: var(--accent);
+}
+
+.nav-folder {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-folder-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px dashed transparent;
+}
+
+.nav-folder-toggle {
+  width: 14px;
+  margin-right: 6px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.nav-folder-label {
+  flex: 1;
+}
+
+.nav-folder-label::before {
+  content: "[DIR] ";
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav-file {
+  flex: 1;
+  width: 100%;
+}
+
+.nav-file-row {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.nav-file-row.is-dragging {
+  opacity: 0.55;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.nav-action-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.nav-empty {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 8px 10px;
 }
 
 .main {
@@ -123,10 +214,39 @@ button:hover {
   gap: 8px;
 }
 
+.auth-info {
+  font-size: 13px;
+  color: var(--muted);
+}
+
 .status-text {
   min-width: 80px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.server-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+}
+
+.server-badge.local {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.server-badge.remote {
+  color: #9a3412;
+  background: #ffedd5;
+  border-color: #fdba74;
 }
 
 #content,
@@ -195,6 +315,15 @@ code {
   border: 1px solid #fecaca;
   padding: 16px;
   border-radius: 12px;
+}
+
+.file-card {
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.file-card h2 {
+  margin-top: 0;
 }
 
 .mobile-toggle {

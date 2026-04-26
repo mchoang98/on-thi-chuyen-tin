@@ -1,0 +1,9 @@
+{
+  "users": [
+    {
+      "email": "mchoang98@gmail.com",
+      "password_hash": "scrypt:32768:8:1$8xif1m6xAcanelmi$7ce29488c330cd87a7276eb36c36bce7f3e4594a0781008394cc79f72b563ace3d6f738c18f190752426e8e6025d7d04c18c96e99ddc78e58ed030ce4c06f3af",
+      "role": "admin"
+    }
+  ]
+}

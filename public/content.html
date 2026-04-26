@@ -38,6 +38,15 @@
         <input id="searchInput" type="search" placeholder="Tim bai..." />
       </div>
 
+      <div class="sidebar-actions">
+        <button id="newFolderBtn">Thu muc</button>
+        <button id="newDocBtn">Document</button>
+      </div>
+
+      <div id="dropHint" class="drop-hint">
+        Keo tha file vao day hoac len thu muc ben duoi
+      </div>
+
       <nav id="navList"></nav>
     </aside>
 
@@ -45,7 +54,13 @@
       <div class="topbar">
         <div id="breadcrumb"></div>
         <div class="toolbar">
+          <span id="authInfo" class="auth-info">Khach</span>
+          <button id="authBtn">Login</button>
+          <span id="serverBadge" class="server-badge"></span>
           <span id="statusText" class="status-text"></span>
+          <button id="moveBtn">Di chuyen</button>
+          <button id="deleteBtn">Xoa</button>
+          <button id="openFileBtn" class="hidden">Mo file</button>
           <button id="editBtn">Sua</button>
           <button id="saveBtn" class="hidden">Luu</button>
           <button id="cancelBtn" class="hidden">Huy</button>
